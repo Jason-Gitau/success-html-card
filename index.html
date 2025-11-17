@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#667EEA">
+    <title>Congratulations Winfred!</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- GSAP for animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- tsParticles for falling petals -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Particles container for falling petals -->
+    <div id="particles"></div>
+
+    <!-- Stage 1: Magical Entrance -->
+    <section id="stage1" class="stage active">
+        <div class="glass-card entrance-card">
+            <h1 class="kinetic-text">
+                <span class="word" data-delay="0">Winfred...</span>
+            </h1>
+            <p class="kinetic-text subtitle">
+                <span class="word" data-delay="800">Your KCSE Journey</span>
+                <span class="word" data-delay="1200">Ends Here...</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Stage 2: The Prank -->
+    <section id="stage2" class="stage">
+        <div class="glass-card prank-card">
+            <div class="dog-character">
+                <img src="assets/how are you feeling image.jpg" alt="Happy penguin" class="dog-img">
+                <div class="speech-bubble">
+                    <p>Hey Winfred! Quick question...</p>
+                </div>
+            </div>
+
+            <h2 class="question">How are you feeling about finishing your KCSE?</h2>
+
+            <div class="buttons-container">
+                <button id="sadButton" class="emotion-btn sad-btn">
+                    <span>😢 Sad</span>
+                </button>
+                <button id="happyButton" class="emotion-btn happy-btn">
+                    <span>😊 Happy</span>
+                </button>
+            </div>
+
+            <p class="dodge-count" id="dodgeCount"></p>
+        </div>
+
+        <!-- Paw prints trail container -->
+        <div id="pawTrails"></div>
+    </section>
+
+    <!-- Stage 3: Celebration Transition -->
+    <section id="stage3" class="stage">
+        <div class="celebration-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="glass-card celebration-front-card">
+                            <img src="assets/stage 2 image..of waiting to move to page 3.jpg" alt="Waiting penguin" class="celebration-penguin-front">
+                            <h2>Get Ready...</h2>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="glass-card celebration-back-card">
+                            <img src="assets/stage 3 image.jpg" alt="Celebration penguin" class="celebration-penguin-back">
+                            <h2 class="celebration-text">🎉</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stage 4: Congratulations Message -->
+    <section id="stage4" class="stage">
+        <div class="congrats-container">
+            <!-- Header Section -->
+            <div class="congrats-header reveal-element">
+                <h1 class="main-title">
+                    <span class="sparkle">✨</span>
+                    Congratulations!
+                    <span class="sparkle">✨</span>
+                </h1>
+                <h2 class="subtitle-large">You Did It, Winfred!</h2>
+            </div>
+
+            <!-- Featured Intro Message -->
+            <div class="featured-message-section reveal-element">
+                <div class="glass-card featured-message-card">
+                    <p class="featured-message-text">
+                        Look at <span class="highlight-word">youuuu</span>, officially done with high school! I'm honestly so proud of you — you survived
+                        <span class="interactive-emoji" data-effect="shake">📚</span> teachers, exams, group work with unserious people,
+                        <span class="interactive-emoji" data-effect="ring">⏰</span> morning preps, and the school rules that made zero sense.
+                        If that isn't strength, I don't know what is. <span class="interactive-emoji" data-effect="bounce">😂</span>
+                    </p>
+                    <p class="featured-message-text">
+                        As you close this chapter, just know you've <span class="highlight-word glow">won already</span>.
+                        I'm praying <span class="interactive-emoji" data-effect="glow">🙏</span> that God blesses you with an
+                        <span class="highlight-word shimmer">amazing grade</span> — the kind that makes even the teachers who stressed you
+                        start bragging that they taught you. <span class="interactive-emoji" data-effect="float">📚</span>
+                    </p>
+                    <p class="featured-message-text">
+                        You've worked so hard, and you deserve the very best. Whatever your results, you're destined for
+                        <span class="highlight-word sparkle">greatness</span>. But still… may the examiner have mercy and may the
+                        KCSE algorithm favor you heavily! <span class="interactive-emoji" data-effect="spin">😄</span><span class="interactive-emoji" data-effect="twinkle">✨</span>
+                    </p>
+                    <p class="featured-message-text final-line">
+                        I'm cheering for you, proud of you, and excited for everything that's coming next.
+                        Congrats once again, Winfred — this is just the beginning of your
+                        <span class="highlight-word rainbow">glow-up</span>. <span class="interactive-emoji pulse" data-effect="pulse">💛</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="gallery-section reveal-element">
+                <h3 class="section-title">Memories 📸</h3>
+                <p class="gallery-hint">Click each card to reveal! 👇</p>
+                <div class="photo-grid">
+                    <div class="photo-flip-card" data-flipped="false">
+                        <div class="photo-flip-inner">
+                            <div class="photo-flip-front glass-card">
+                                <p class="photo-message">Warning: Cuteness overload ahead! ⚠️</p>
+                            </div>
+                            <div class="photo-flip-back">
+                                <img src="assets/placeholder-winfred-1.jpg" alt="Winfred" class="photo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-flip-card" data-flipped="false">
+                        <div class="photo-flip-inner">
+                            <div class="photo-flip-front glass-card">
+                                <p class="photo-message">This one's giving main character energy ✨</p>
+                            </div>
+                            <div class="photo-flip-back">
+                                <img src="assets/placeholder-winfred-2.png" alt="Winfred" class="photo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-flip-card" data-flipped="false">
+                        <div class="photo-flip-inner">
+                            <div class="photo-flip-front glass-card">
+                                <p class="photo-message">Proof that you're literally glowing! 💫</p>
+                            </div>
+                            <div class="photo-flip-back">
+                                <img src="assets/image 4.jpg" alt="Winfred" class="photo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-flip-card" data-flipped="false">
+                        <div class="photo-flip-inner">
+                            <div class="photo-flip-front glass-card">
+                                <p class="photo-message">The face of someone who conquered KCSE 😎</p>
+                            </div>
+                            <div class="photo-flip-back">
+                                <img src="assets/placeholder-winfred-3.jpg" alt="Winfred" class="photo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Flowers -->
+            <div class="flowers-section reveal-element">
+                <h3 class="section-title">Tap the flowers to bloom 🌺</h3>
+                <div class="flowers-container">
+                    <div class="flower" data-bloomed="false">
+                        <svg viewBox="0 0 100 100" class="flower-svg">
+                            <circle cx="50" cy="50" r="8" fill="#FFD700" class="flower-center"/>
+                            <g class="petals">
+                                <ellipse cx="50" cy="30" rx="12" ry="18" fill="#FF6B9D" class="petal"/>
+                                <ellipse cx="70" cy="50" rx="18" ry="12" fill="#FF6B9D" class="petal"/>
+                                <ellipse cx="50" cy="70" rx="12" ry="18" fill="#FF6B9D" class="petal"/>
+                                <ellipse cx="30" cy="50" rx="18" ry="12" fill="#FF6B9D" class="petal"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="flower" data-bloomed="false">
+                        <svg viewBox="0 0 100 100" class="flower-svg">
+                            <circle cx="50" cy="50" r="8" fill="#FFD700" class="flower-center"/>
+                            <g class="petals">
+                                <ellipse cx="50" cy="30" rx="12" ry="18" fill="#A855F7" class="petal"/>
+                                <ellipse cx="70" cy="50" rx="18" ry="12" fill="#A855F7" class="petal"/>
+                                <ellipse cx="50" cy="70" rx="12" ry="18" fill="#A855F7" class="petal"/>
+                                <ellipse cx="30" cy="50" rx="18" ry="12" fill="#A855F7" class="petal"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="flower" data-bloomed="false">
+                        <svg viewBox="0 0 100 100" class="flower-svg">
+                            <circle cx="50" cy="50" r="8" fill="#FFD700" class="flower-center"/>
+                            <g class="petals">
+                                <ellipse cx="50" cy="30" rx="12" ry="18" fill="#FEC163" class="petal"/>
+                                <ellipse cx="70" cy="50" rx="18" ry="12" fill="#FEC163" class="petal"/>
+                                <ellipse cx="50" cy="70" rx="12" ry="18" fill="#FEC163" class="petal"/>
+                                <ellipse cx="30" cy="50" rx="18" ry="12" fill="#FEC163" class="petal"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signature -->
+            <div class="signature-section reveal-element">
+                <div class="signature-container">
+                    <p class="signature-text">With love and pride,</p>
+                    <svg class="signature-svg" viewBox="0 0 300 100">
+                        <path id="signaturePath" d="M 20 60 Q 40 20, 80 50 T 140 50 Q 160 60, 180 40 T 220 50 Q 240 60, 280 50"
+                              stroke="#FF6B9D"
+                              stroke-width="3"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-dasharray="500"
+                              stroke-dashoffset="500"/>
+                        <text x="150" y="85" text-anchor="middle" class="signature-name">Jasonnn</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Final Message -->
+            <div class="final-section reveal-element">
+                <div class="glass-card final-card">
+                    <p class="final-message">
+                        Here's to new beginnings! 🚀🌈<br>
+                        The best is yet to come! 💫
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio toggle (optional) -->
+    <button id="audioToggle" class="audio-toggle" title="Toggle sound">
+        🔊
+    </button>
+
+    <!-- Scroll Indicator -->
+    <div id="scrollIndicator" class="scroll-indicator">
+        <span class="scroll-text">More below</span>
+        <span class="scroll-arrow">↓</span>
+    </div>
+
+    <!-- Debug stage indicator -->
+    <div id="stageDebug" class="stage-debug">Stage: 1</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
