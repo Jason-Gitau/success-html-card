@@ -1036,21 +1036,6 @@ body {
     content: '🔇';
 }
 
-/* Stage Debug Indicator */
-.stage-debug {
-    position: fixed;
-    top: 24px;
-    left: 24px;
-    padding: 8px 16px;
-    background: rgba(0, 0, 0, 0.7);
-    color: #00ff00;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    border-radius: 8px;
-    z-index: 10000;
-    border: 1px solid #00ff00;
-}
-
 /* ===================================
    RESPONSIVE & ACCESSIBILITY
    =================================== */

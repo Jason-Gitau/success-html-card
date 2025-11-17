@@ -595,12 +595,6 @@ function transitionToStage(stageNumber) {
             currentStage = stageNumber;
             console.log(`Stage ${stageNumber} is now active`);
 
-            // Update debug indicator
-            const debugEl = document.getElementById('stageDebug');
-            if (debugEl) {
-                debugEl.textContent = `Stage: ${stageNumber}`;
-            }
-
             // Initialize new stage
             switch (stageNumber) {
                 case 2:
